@@ -1,0 +1,14 @@
+﻿@model IEnumerable<HolaMundo.Models.Pais>
+@{
+	Layout = null;
+}
+
+<h2>Esta lista de paises esta siendo generada mediante el uso de inyeccion de dependencias</h2>
+<ul>
+
+	@foreach (var item in Model)
+	{
+		<li>@item.Nombre</li>
+	}
+
+</ul>
