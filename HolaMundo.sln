@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaMundo", "HolaMundo\HolaMundo.csproj", "{E504E757-E0AD-4AE5-AC37-BA96105F63DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolaMundo", "HolaMundo\HolaMundo.csproj", "{E504E757-E0AD-4AE5-AC37-BA96105F63DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiPaises", "WebApiPaises\WebApiPaises.csproj", "{C2CF7FA3-4601-4A96-8929-30B01A3B9B14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{E504E757-E0AD-4AE5-AC37-BA96105F63DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E504E757-E0AD-4AE5-AC37-BA96105F63DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E504E757-E0AD-4AE5-AC37-BA96105F63DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2CF7FA3-4601-4A96-8929-30B01A3B9B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2CF7FA3-4601-4A96-8929-30B01A3B9B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2CF7FA3-4601-4A96-8929-30B01A3B9B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2CF7FA3-4601-4A96-8929-30B01A3B9B14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

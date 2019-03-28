@@ -7,7 +7,9 @@ namespace HolaMundo.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly IRepositorioPais repositorio;
+        // la inyeccion de dependencia se hace en Startup.cs, metodo ConfigureServices => services.AddScoped<IRepositorioPais, PaisRepositorioEF>();
+        private readonly IRepositorioPais repositorio;
+
 		public HomeController(IRepositorioPais repositorio)
 		{
 			this.repositorio = repositorio;

@@ -1,14 +1,19 @@
 ﻿@model IEnumerable<HolaMundo.Models.Pais>
 @{
-	Layout = null;
+    Layout = null;
 }
 
-<h2>Esta lista de paises esta siendo generada mediante el uso de inyeccion de dependencias</h2>
+<h3>
+    Esta lista de paises esta siendo generada mediante el uso de inyeccion de dependencias.
+</h3>
+<h3>
+    Esta seccion es un ViewComponent llamado Paises, usa la vista Default dentro de Shared, Components, Paises.
+</h3>
 <ul>
 
-	@foreach (var item in Model)
-	{
-		<li>@item.Nombre</li>
-	}
+    @foreach (var item in Model)
+    {
+        <li>@item.Nombre</li>
+    }
 
 </ul>
