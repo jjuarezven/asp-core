@@ -1,12 +1,16 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using WebApiPaises.Data;
 using WebApiPaises.Models;
 
@@ -25,7 +29,22 @@ namespace WebApiPaises
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(ConfigureJson);
-            services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("paisDB"));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
+            // 1 se indica el tipo de autenticacion utilizado
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "midominio.com",
+                ValidAudience = "midominio.com",
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["llave_secreta"])),
+                ClockSkew = TimeSpan.Zero
+            });
         }
 
         private void ConfigureJson(MvcJsonOptions obj)
@@ -47,6 +66,8 @@ namespace WebApiPaises
             }
 
             app.UseHttpsRedirection();
+            // 2 se especifica que se debe utilizar la autenticacion
+            app.UseAuthentication();
             app.UseMvc();
 
             if (!context.Paises.Any())

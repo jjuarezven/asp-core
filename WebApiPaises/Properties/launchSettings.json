@@ -14,7 +14,8 @@
       "launchBrowser": true,
       "launchUrl": "api/pais",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "llave_secreta": "sqfqwfqwfwUUUdsafsgaqUUDHhdggtte44646,IiiiyHHGYDYD"
       }
     },
     "WebApiPaises": {
