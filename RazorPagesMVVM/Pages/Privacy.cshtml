@@ -1,0 +1,11 @@
+﻿@*para declarar parametros a recibir via url*@
+@page "{id:int?}/{pg:int?}"
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>@Model.Message</p>
+
+<h2>@Model.Nombre</h2>

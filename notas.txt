@@ -1,0 +1,21 @@
+wwwroot: alli va todo el contenido estatico.
+Iconfiguration on startup = se pueden usar variables de ambiente
+En startup.cs configuramos los servicios (Un servicio es un componente común que se utilizará en distintas partes de la aplicación) y configuramos la inyeccion de dependencias.
+	Configure: configuracion del middleware, reglas a aplicar a las peticiones http, se puede entender como un conjunto de procesos a ejecutar. El orden del middleware importa!
+	
+	ViewComponent: es como un pequeño controlador que se puede usar desde cualquier sitio, se puede usar desde Layout
+_ViewImports configura los accesos a los objetos dentro de Razor.
+
+Web api: podemos definir las rutas con la complejidad que necesitemos
+
+JWT: claims es informacion confiable acerca de un usuario
+
+Razor pages: Razor Pages are built on top of MVC, but they use a slightly different paradigm than the MVC pattern. 
+With MVC the controller typically provides the logic and behavior for an action, ultimately producing a view model 
+which contains data that is used to render the view. Razor Pages takes a slightly different approach, by using a Page Model.
+
+Compared to MVC, the page model acts as both a mini-controller and the view model for the view. 
+It's responsible for both the behavior of the page and for exposing the data used to generate the view. 
+This pattern is closer to the Model-View-ViewModel (MVVM) pattern used in some desktop and mobile frameworks, especially if 
+the business logic is pushed out of the page model and into your "business" model.
+	La estructura de los archivos definen las reglas de ruteo dentro de razor pages, pero es configurable mediante el atributo Route

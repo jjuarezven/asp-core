@@ -1,14 +1,11 @@
-﻿using System;
+﻿using HolaMundo.Data;
+using HolaMundo.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using HolaMundo.Data;
-using HolaMundo.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace HolaMundo.Services
 {
-	public class PaisRepositorioEF : IRepositorioPais
+    public class PaisRepositorioEF : IRepositorioPais
 	{
 		private ApplicationDbContext DbContext { get; }
 		public PaisRepositorioEF(ApplicationDbContext dbContext)

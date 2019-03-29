@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace HolaMundo.Controllers
 {
-	public class HomeController : Controller
+    public class HomeController : Controller
 	{
         // la inyeccion de dependencia se hace en Startup.cs, metodo ConfigureServices => services.AddScoped<IRepositorioPais, PaisRepositorioEF>();
         private readonly IRepositorioPais repositorio;

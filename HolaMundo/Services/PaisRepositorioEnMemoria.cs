@@ -1,12 +1,9 @@
 ﻿using HolaMundo.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HolaMundo.Services
 {
-	public class PaisRepositorioEnMemoria : IRepositorioPais
+    public class PaisRepositorioEnMemoria : IRepositorioPais
 	{
 		public IEnumerable<Pais> ObtenerTodos() 
 		{
