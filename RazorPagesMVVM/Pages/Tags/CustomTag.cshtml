@@ -1,0 +1,11 @@
+﻿@page
+@model RazorPagesMVVM.Pages.Tags.CustomTagModel
+@{
+    ViewData["Title"] = "CustomTag";
+    var aprobado = true;
+}
+
+<h1>Personalizado</h1>
+
+<div Condition="aprobado">Usted ha sido aprobado</div>
+<div Condition="!aprobado">Usted ha sido rechazado</div>

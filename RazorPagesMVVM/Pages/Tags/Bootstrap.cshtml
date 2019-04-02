@@ -1,0 +1,20 @@
+﻿@page
+@model RazorPagesMVVM.Pages.Tags.BootstrapModel
+@{
+    ViewData["Title"] = "Bootstrap";
+}
+
+<h1>Bootstrap</h1>
+
+<button type="button"
+        class="btn btn-primary btn-lg"
+        bs-toggle-modal="simpleModal">
+    Launch modal
+</button>
+<modal id="simpleModal"
+       title="Modal Title">
+    <modal-body>
+        <h4>Something happened</h4>
+        <p>Something happened</p>
+    </modal-body>
+</modal>

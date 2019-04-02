@@ -1,0 +1,13 @@
+﻿@page
+@model RazorPagesMVVM.Pages.Tags.CacheTagModel
+@{
+    ViewData["Title"] = "CacheTag";
+}
+
+<h1>CacheTag</h1>
+<span>Sin cache: @DateTime.Now</span>
+<br />
+<cache expires-after="@TimeSpan.FromSeconds(5)">
+    Con cache: @DateTime.Now
+</cache>
+

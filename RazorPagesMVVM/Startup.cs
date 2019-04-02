@@ -30,7 +30,9 @@ namespace RazorPagesMVVM
             });
 
             // puedo cambiar el nombre de la ruta y sus parametros
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddRazorPagesOptions(options => options.Conventions.AddPageRoute("/Privacy/{id}/{pg}", "privacidad/{id}/{pg}"));
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddRazorPagesOptions(options => options.Conventions.AddPageRoute("/Privacy/{id}/{pg}", "privacidad/{id}/{pg}"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
