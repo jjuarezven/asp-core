@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
 
 namespace InyeccionDependencias
@@ -41,11 +43,19 @@ namespace InyeccionDependencias
             services.AddSingleton<IOperationSingleton, Operation>();
             services.AddSingleton<IOperationSingletonInstance>(new Operation(Guid.Empty));
             services.AddTransient<OperationService, OperationService>();
+
+            services.AddSingleton<Serilog.ILogger>(options => 
+            {
+                var conString = Configuration["Serilog:DefaultConnection"];
+                var tableName = Configuration["Serilog:TableName"];
+                return new LoggerConfiguration().WriteTo.MSSqlServer(conString, tableName, restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Warning, autoCreateSqlTable: true).CreateLogger();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddFile("Log-{Date}.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
