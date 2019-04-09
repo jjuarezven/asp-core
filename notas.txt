@@ -24,4 +24,4 @@ Tag helpers: Es importante comprender que los tag helpers no sustituyen a los ht
 a la hora de manipular contenido HTML. No existe un tag helper para todo html helper, por eso los tag helpers no pueden reemplazar 
 actualmente a los html helpers.
 
-Tanto la inyeccionde deopendencias como el Logging estan integrados dentro de core
+Tanto la inyeccion de dependencias como el Logging estan integrados dentro de core
