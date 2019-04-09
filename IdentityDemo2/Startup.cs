@@ -18,6 +18,7 @@ namespace IdentityDemo2
 {
     public class Startup
     {
+        public const int passwordLength = 6;    
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,11 +34,15 @@ namespace IdentityDemo2
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
+                options.Password.RequiredLength = passwordLength;
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.User.RequireUniqueEmail = true;
+                options.Password.RequireUppercase = true;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddErrorDescriber<MyErrorDescriber>();
+
             services.AddAuthorization(options =>
             {
                 //options.AddPolicy("PolicyCategoriaEmpleado", pol => pol.RequireClaim("CategoriaEmpleado", new string[] { "4", "5" }));
@@ -75,6 +80,18 @@ namespace IdentityDemo2
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+    }
+
+    class MyErrorDescriber: IdentityErrorDescriber
+    {
+        public override IdentityError PasswordRequiresUpper()
+        {
+            return new IdentityError()
+            {
+                Code = nameof(PasswordRequiresUpper),
+                Description = "El password debe contener al menos una mayuscula"
+            };
         }
     }
 }
