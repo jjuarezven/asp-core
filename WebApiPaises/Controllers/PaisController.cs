@@ -22,9 +22,20 @@ namespace WebApiPaises.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Pais> Get()
+        public IActionResult Get()
         {
-            return context.Paises.ToList();
+            var claims = User.Claims.ToList();
+            var esAdmin = claims.Any(x => x.Type == "Admin" && x.Value == "Y");
+            if (!esAdmin)
+            {
+                var pais = claims.FirstOrDefault(x => x.Type == "Pais");
+                if (pais == null)
+                {
+                    return Unauthorized();
+                }
+                return Ok(context.Paises.Where(x => x.Nombre == pais.Value));
+            }
+            return Ok(context.Paises.ToList());
         }
 
         [HttpGet("{id}", Name = "paisCreado")]

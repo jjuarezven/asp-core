@@ -78,7 +78,9 @@ namespace WebApiPaises.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.UniqueName, userInfo.Email),
                 new Claim("unaClave", "unValor"),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("Pais", "Colombia"),
+                //new Claim("Admin", "Y")
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["llave_secreta"]));
