@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreEjemplos", "EFCoreEje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityDemo", "IdentityDemo2\IdentityDemo.csproj", "{98287E86-01DE-4AC9-95E6-DF25470E1903}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjemploAngular", "EjemploAngular\EjemploAngular.csproj", "{408AF870-77A7-4EB8-94A0-AD304E3BEFA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{98287E86-01DE-4AC9-95E6-DF25470E1903}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98287E86-01DE-4AC9-95E6-DF25470E1903}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98287E86-01DE-4AC9-95E6-DF25470E1903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{408AF870-77A7-4EB8-94A0-AD304E3BEFA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{408AF870-77A7-4EB8-94A0-AD304E3BEFA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{408AF870-77A7-4EB8-94A0-AD304E3BEFA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{408AF870-77A7-4EB8-94A0-AD304E3BEFA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
