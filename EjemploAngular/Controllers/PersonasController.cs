@@ -2,6 +2,7 @@
 using EjemploAngular.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,22 +35,41 @@ namespace EjemploAngular.Controllers
 
 		// GET: api/Personas/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Persona>> GetPersona(int id)
+		public async Task<IActionResult> GetPersona(int id, bool incluirDirecciones = false)
 		{
-			var persona = await context.Personas.FindAsync(id);
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
+			Persona persona;
+			if (incluirDirecciones)
+			{
+				persona = await context.Personas.Include(x => x.Direcciones).SingleOrDefaultAsync(x => x.Id == id);
+			}
+			else
+			{
+				persona = await context.Personas.SingleOrDefaultAsync(x => x.Id == id);
+			}
+			
 
 			if (persona == null)
 			{
 				return NotFound();
 			}
 
-			return persona;
+			return Ok(persona);
 		}
 
 		// PUT: api/Personas/5
 		[HttpPut("{id}")]
 		public async Task<IActionResult> PutPersona(int id, Persona persona)
 		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
 			if (id != persona.Id)
 			{
 				return BadRequest();
@@ -59,6 +79,7 @@ namespace EjemploAngular.Controllers
 
 			try
 			{
+				await CrearOEditarDirecciones(persona.Direcciones);
 				await context.SaveChangesAsync();
 			}
 			catch (DbUpdateConcurrencyException)
@@ -72,13 +93,28 @@ namespace EjemploAngular.Controllers
 					throw;
 				}
 			}
-
 			return NoContent();
+		}
+
+		private async Task CrearOEditarDirecciones(List<Address> direcciones)
+		{
+			var direccionesACrear = direcciones.Where(x => x.Id == 0).ToList();
+			var direccionesAEditar = direcciones.Where(x => x.Id != 0).ToList();
+
+			if (direccionesACrear.Any())
+			{
+				await context.AddRangeAsync(direccionesACrear);
+			}
+
+			if (direccionesAEditar.Any())
+			{
+				context.UpdateRange(direccionesAEditar);
+			}
 		}
 
 		// POST: api/Personas
 		[HttpPost]
-		public async Task<ActionResult<Persona>> PostPersona(Persona persona)
+		public async Task<ActionResult<Persona>> PostPersona([FromBody] Persona persona)
 		{
 			context.Personas.Add(persona);
 			await context.SaveChangesAsync();
